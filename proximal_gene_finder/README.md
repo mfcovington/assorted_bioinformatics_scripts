@@ -3,10 +3,10 @@
 **proximal_gene_finder.pl** - Perl script to identify genes proximal to genomic regions of interest
 
     ./proximal_gene_finder.pl
-        --range               Distance in bp from genome location to search for genes [2000]
-        --gene_coords_file    [gene_coordinates_table.txt]
-        --positions_file      [genome_locations.txt]
-        --output_file         [proximal_genes.txt]
+        --range             Distance in bp from genome location to search for genes [2000]
+        --gene_coords_file  File with gene coordinates [gene_coordinates_table.txt]
+        --positions_file    File with genomic positions of interest [genome_locations.txt]
+        --output_file       Output file [proximal_genes.txt]
 
 # Sample Input Files
 

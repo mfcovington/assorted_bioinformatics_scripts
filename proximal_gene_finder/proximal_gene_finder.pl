@@ -3,7 +3,7 @@
 # Mike Covington
 # created: 2013-01-19
 #
-# Description:
+# Description: Perl script to identify genes proximal to genomic regions of interest
 #
 use strict;
 use warnings;
@@ -13,17 +13,31 @@ use Getopt::Long;
 use Scalar::Util 'looks_like_number';
 use Set::IntervalTree;
 
+my $usage = <<USAGE;
+
+$0
+    --range             Distance in bp from genome location to search for genes [2000]
+    --gene_coords_file  File with gene coordinates [gene_coordinates_table.txt]
+    --positions_file    File with genomic positions of interest [genome_locations.txt]
+    --output_file       Output file [proximal_genes.txt]
+
+USAGE
+
 my $range            = 2000;
 my $gene_coords_file = "gene_coordinates_table.txt";
 my $positions_file   = "genome_locations.txt";
 my $output_file      = "proximal_genes.txt";
+my $help;
 
 my $options = GetOptions(
     "range=i"            => \$range,
     "gene_coords_file=s" => \$gene_coords_file,
     "positions_file=s"   => \$positions_file,
     "output_file=s"      => \$output_file,
+    "help"               => \$help,
 );
+
+die $usage if $help;
 
 # build hash of gene interval trees by chromosome
 open my $gene_coords_fh, "<", $gene_coords_file;
